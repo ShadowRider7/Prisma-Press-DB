@@ -4,7 +4,7 @@ import config from "../../config";
 import { RegisterUserPayload } from "./user.interface";
 
 const registerUserInToDB = async (payload: RegisterUserPayload) => {
-  const { name, email, password, profilePhoto } = payload;
+  const { name, email, password, profilePhoto, bio } = payload;
   const isUserExist = await prisma.user.findUnique({
     where: { email },
   });
@@ -23,14 +23,20 @@ const registerUserInToDB = async (payload: RegisterUserPayload) => {
       name,
       email,
       password: hashedPassword,
+      profile: {
+        create: {
+          profilePhoto,
+          bio,
+        },
+      },
     },
   });
-  await prisma.profile.create({
-    data: {
-      userId: createdUser.id,
-      profilePhoto,
-    },
-  });
+  // await prisma.profile.create({
+  //   data: {
+  //     userId: createdUser.id,
+  //     profilePhoto,
+  //   },
+  // });
 
   const user = await prisma.user.findUnique({
     where: {
@@ -46,6 +52,19 @@ const registerUserInToDB = async (payload: RegisterUserPayload) => {
   });
   return user;
 };
+const getMyProfileFromDB = async (userId: string) => {
+  const user = await prisma.user.findUniqueOrThrow({
+    where: { id: userId },
+    omit: {
+      password: true,
+    },
+    include: {
+      profile: true,
+    },
+  });
+  return user;
+};
 export const userService = {
   registerUserInToDB,
+  getMyProfileFromDB,
 };
