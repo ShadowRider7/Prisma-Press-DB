@@ -60,5 +60,5 @@ export const auth = (...requiredRoles: Role[]) => {
       role,
     };
     next();
-  }, "");
+  });
 };

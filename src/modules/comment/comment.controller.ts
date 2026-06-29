@@ -15,7 +15,6 @@ const createComment = catchAsync(
       data: result,
     });
   },
-  "",
 );
 
 const getCommentByAuthorId = catchAsync(
@@ -31,7 +30,6 @@ const getCommentByAuthorId = catchAsync(
       data: result,
     });
   },
-  "",
 );
 
 const getCommentByPostId = catchAsync(
@@ -45,7 +43,6 @@ const getCommentByPostId = catchAsync(
       data: result,
     });
   },
-  "",
 );
 
 const updateComment = catchAsync(
@@ -64,7 +61,6 @@ const updateComment = catchAsync(
       data: result,
     });
   },
-  "",
 );
 
 const deleteComment = catchAsync(
@@ -79,7 +75,6 @@ const deleteComment = catchAsync(
       data: result,
     });
   },
-  "",
 );
 
 const moderateComment = catchAsync(
@@ -97,7 +92,6 @@ const moderateComment = catchAsync(
       data: result,
     });
   },
-  "",
 );
 
 export const commentController = {

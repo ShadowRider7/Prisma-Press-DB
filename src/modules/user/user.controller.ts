@@ -53,7 +53,6 @@ const registerUser = catchAsync(
       data: { user },
     });
   },
-  "register",
 );
 
 const getMyProfile = catchAsync(
@@ -77,7 +76,6 @@ const getMyProfile = catchAsync(
       data: { profile },
     });
   },
-  "get",
 );
 
 const updateMyProfile = catchAsync(
@@ -96,7 +94,6 @@ const updateMyProfile = catchAsync(
       data: { updatedProfile },
     });
   },
-  "",
 );
 
 export const userController = {

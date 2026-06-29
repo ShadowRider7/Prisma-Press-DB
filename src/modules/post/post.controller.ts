@@ -17,12 +17,10 @@ const createPost = catchAsync(
       data: result,
     });
   },
-  "create post",
 );
 const getAllPosts = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const query = req.query;
-    console.log(query);
     const posts = await postService.getAllPosts(query);
     sendResponse(res, {
       success: true,
@@ -31,7 +29,6 @@ const getAllPosts = catchAsync(
       data: posts,
     });
   },
-  "",
 );
 const getPostsStatus = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -44,7 +41,6 @@ const getPostsStatus = catchAsync(
       data: result,
     });
   },
-  "",
 );
 const getMyPosts = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -58,7 +54,6 @@ const getMyPosts = catchAsync(
       data: result,
     });
   },
-  "",
 );
 const getPostById = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -76,7 +71,6 @@ const getPostById = catchAsync(
       data: result,
     });
   },
-  "",
 );
 const updatePost = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -103,7 +97,6 @@ const updatePost = catchAsync(
       data: null,
     });
   },
-  "",
 );
 const deletePost = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -125,7 +118,6 @@ const deletePost = catchAsync(
       data: result,
     });
   },
-  "",
 );
 
 export const postController = {

@@ -33,7 +33,6 @@ const loginUser = catchAsync(
       },
     });
   },
-  "login",
 );
 
 const refreshToken = catchAsync(
@@ -56,7 +55,6 @@ const refreshToken = catchAsync(
       data: accessToken,
     });
   },
-  "s",
 );
 
 export const authController = {
