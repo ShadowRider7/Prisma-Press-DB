@@ -58,17 +58,16 @@ const getCommentByCommentId = async (postId: string) => {
 const updateComment = async (
   commentId: string,
   data: IUpdateCommentPayload,
-  authorId: string,
 ) => {
-  const commentData = await prisma.comment.findUniqueOrThrow({
-    where: {
-      id: commentId,
-      authorId,
-    },
-    select: {
-      id: true,
-    },
-  });
+  // const commentData = await prisma.comment.findUniqueOrThrow({
+  //   where: {
+  //     id: commentId,
+  //     authorId,
+  //   },
+  //   select: {
+  //     id: true,
+  //   },
+  // });
 
   // if (!commentData) {
   //     throw new Error("Your provided input is invalid!")
@@ -77,7 +76,6 @@ const updateComment = async (
   const comment = await prisma.comment.update({
     where: {
       id: commentId,
-      authorId,
     },
     data,
   });
@@ -85,16 +83,16 @@ const updateComment = async (
   return comment;
 };
 
-const deleteComment = async (commentId: string, authorId: string) => {
-  const commentData = await prisma.comment.findUniqueOrThrow({
-    where: {
-      id: commentId,
-      authorId,
-    },
-    select: {
-      id: true,
-    },
-  });
+const deleteComment = async (commentId: string) => {
+  // const commentData = await prisma.comment.findUniqueOrThrow({
+  //   where: {
+  //     id: commentId,
+  //     authorId,
+  //   },
+  //   select: {
+  //     id: true,
+  //   },
+  // });
 
   // if (!commentData) {
   //     throw new Error("Your provided input is invalid!")
@@ -102,7 +100,7 @@ const deleteComment = async (commentId: string, authorId: string) => {
 
   const comment = await prisma.comment.delete({
     where: {
-      id: commentData.id,
+      id: commentId,
     },
   });
 
